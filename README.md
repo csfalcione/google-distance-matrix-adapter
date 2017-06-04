@@ -31,7 +31,7 @@ How to Use
     </li>
 </ol>
 
-<h3> Not enough funcionality? </h3>
+<h3> Not enough functionality? </h3>
 <h6> We've only included what was applicable to another project. </h6>
 <h6> If you need more functionality than we did, 
 but still want to take advantage of the strong project structure, you have two options: </h6>
