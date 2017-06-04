@@ -7,7 +7,7 @@ A straightforward, reliable, PHP wrapper for consuming the Google Geocoding API.
 How to Use
 --------
 <ol>
-    <li><strong>Construct a Geocoder with your api_key</strong>
+    <li><strong>Construct a Geocoder with your google api_key</strong>
         <br/>
         <code>
             new Geocoder( "your_api_key" );
