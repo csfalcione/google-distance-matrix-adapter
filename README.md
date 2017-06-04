@@ -13,14 +13,18 @@ How to Use
 </code>
 
 2. <strong>Run a search or get the first match</strong>
+
 <code>
     $search = "Innovation Depot Birmingham";
+    <br>
     $result = $geocoder->firstResult( $search );
 </code>
 
 3. <strong>Interact with the data through the *Result object API</strong>
+
 <code>
     $result->getCoordinate();
+    <br/>
     $result->getFormattedAddress();
 </code>
 
