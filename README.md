@@ -9,25 +9,28 @@ How to Use
 
 1. <strong>Construct a Geocoder with your api_key</strong>
 <br>
-<code> new Geocoder( "your_api_key" ) </code>
+<code>
+    new Geocoder( "your_api_key" );
+</code>
 2. <strong>Run a search or get the first match</strong>
 <br>
 <code>
-$search = "Innovation Depot Birmingham";
-<br>
-$result = $geocoder->firstResult( $search );
+    $search = "Innovation Depot Birmingham";
+    <br>
+    $result = $geocoder->firstResult( $search );
 </code>
 3. <strong>Interact with the data through the *Result object API</strong>
 <br>
 <code>
-$result->getCoordinate();
-$result->getFormattedAddress();
+    $result->getCoordinate();
+    $result->getFormattedAddress();
 </code>
 
 
 ### Not enough funcionality?
-###### We've only included was applicable to another project.If you need more functionality than we did, but still want to take advantage of the reliable project structure, you have two options:
-* Extend the ResultAdapter class, and access the protected "Google Data" object
+###### We've only included what was applicable to another project.
+###### If you need more functionality than we did, but still want to take advantage of the strong project structure, you have two options:
+* Extend the ResultAdapter class, to access a protected "Google Data" object
 
 or better yet...
-* Add to the ResultAdapter class using the patterns already in place, and send a pull request!
+* Build to the ResultAdapter class directly, using the patterns already in place, and send a pull request!
