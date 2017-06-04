@@ -6,28 +6,30 @@ A straightforward, reliable, PHP wrapper for consuming the Google Geocoding API.
 
 How to Use
 --------
-
-1. <strong>Construct a Geocoder with your api_key</strong>
-<code>
-    new Geocoder( "your_api_key" );
-</code>
-
-2. <strong>Run a search or get the first match</strong>
-
-<code>
-    $search = "Innovation Depot Birmingham";
-    <br>
-    $result = $geocoder->firstResult( $search );
-</code>
-
-3. <strong>Interact with the data through the _ResultAdapter_ object</strong>
-
-<code>
-    $result->getCoordinate();
-    <br/>
-    $result->getFormattedAddress();
-</code>
-
+<ol>
+    <li><strong>Construct a Geocoder with your api_key</strong>
+        <br/>
+        <code>
+            new Geocoder( "your_api_key" );
+        </code>
+    </li>
+    <li><strong>Run a search or get the first match</strong>
+        <br/>
+        <code>
+            $search = "Innovation Depot Birmingham";
+            <br>
+            $result = $geocoder->firstResult( $search );
+        </code>
+    </li>
+    <li><strong>Interact with the data through the <em>ResultAdapter object</em></strong>
+        <br/>
+        <code>
+            $result->getCoordinate();
+            <br/>
+            $result->getFormattedAddress();
+        </code>
+    </li>
+</ol>
 
 ### Not enough funcionality?
 ###### We've only included what was applicable to another project.
