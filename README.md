@@ -8,21 +8,17 @@ How to Use
 --------
 
 1. <strong>Construct a Geocoder with your api_key</strong>
-
 <code>
     new Geocoder( "your_api_key" );
 </code>
 
 2. <strong>Run a search or get the first match</strong>
-
 <code>
     $search = "Innovation Depot Birmingham";
-    <br>
     $result = $geocoder->firstResult( $search );
 </code>
 
 3. <strong>Interact with the data through the *Result object API</strong>
-
 <code>
     $result->getCoordinate();
     $result->getFormattedAddress();
