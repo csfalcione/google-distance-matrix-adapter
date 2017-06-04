@@ -18,7 +18,7 @@
     },
 	"autoload": {
         "psr-4": {
-            "Geocoder\\": "src/"
+            "vector\\Geocoder\\": "src/"
         }
     }
 }

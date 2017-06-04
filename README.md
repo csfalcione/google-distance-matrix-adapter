@@ -32,10 +32,8 @@ How to Use
 </ol>
 
 <h3> Not enough functionality? </h3>
-<h6> We've only included what was applicable to another project. </h6>
-<h6> If you need more functionality than we did, 
-but still want to take advantage of the strong project structure, you have two options: </h6>
-<ul>
-    <li> Extend the ResultAdapter class, to access a protected "Google Data" object </li>
-    <li> Or better yet.. Build to the ResultAdapter class directly, using the patterns already in place, and send a pull request! </li>
-</ul>
+<h6> We've only included what was applicable to another project, but all of our
+packages are designed for easy scaling.</h6>
+
+<h6> Feel free to add functionality for your project, just make sure to
+send a pull request when you're done! </h6>

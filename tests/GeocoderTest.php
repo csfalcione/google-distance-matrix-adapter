@@ -1,6 +1,6 @@
 <?php
 
-use Geocoder\Geocoder;
+use vector\Geocoder\Geocoder;
 
 class GeocoderTest extends PHPUnit_Framework_TestCase{
 

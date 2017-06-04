@@ -6,7 +6,7 @@
  * Time: 7:58 PM
  */
 
-namespace Geocoder;
+namespace vector\Geocoder;
 
 
 class Geocoder

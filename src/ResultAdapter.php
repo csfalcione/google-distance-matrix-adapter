@@ -6,7 +6,7 @@
  * Time: 8:00 PM
  */
 
-namespace Geocoder;
+namespace vector\Geocoder;
 
 
 class ResultAdapter
