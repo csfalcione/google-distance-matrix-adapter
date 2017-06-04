@@ -1,15 +1,33 @@
-Composer Library Template
+Google Maps Geocoder PHP Wrapper
 =========================
 
-If you are trying to create a new PHP Composer library, whether it will be going to submitted to packagist.org or just in your Github account, this template of files will surely help you make the process a lot easier and faster.
+#### So you dont have to think about it!
+A straightforward, reliable, PHP wrapper for consuming the Google Geocoding API.
 
-Features
+How to Use
 --------
 
-* PSR-4 autoloading compliant structure
-* Unit-Testing with PHPUnit
-* Comprehensive Guides and tutorial
-* Easy to use to any framework or even a plain php file
+1. <strong>Construct a Geocoder with your api_key</strong>
+<br>
+<code> new Geocoder( "your_api_key" ) </code>
+2. <strong>Run a search or get the first match</strong>
+<br>
+<code>
+$search = "Innovation Depot Birmingham";
+<br>
+$result = $geocoder->firstResult( $search );
+</code>
+3. <strong>Interact with the data through the *Result object API</strong>
+<br>
+<code>
+$result->getCoordinate();
+$result->getFormattedAddress();
+</code>
 
 
-I encourage that you put more information on this readme file instead of leaving it as is. See [How to make a README file](http://www.darwinbiler.com/designing-and-making-the-readme-file-for-your-github-repository/) for more info.
+### Not enough funcionality?
+###### We've only included was applicable to another project.If you need more functionality than we did, but still want to take advantage of the reliable project structure, you have two options:
+* Extend the ResultAdapter class, and access the protected "Google Data" object
+
+or better yet...
+* Add to the ResultAdapter class using the patterns already in place, and send a pull request!
