@@ -20,7 +20,7 @@ How to Use
     $result = $geocoder->firstResult( $search );
 </code>
 
-3. <strong>Interact with the data through the *Result object API</strong>
+3. <strong>Interact with the data through the _ResultAdapter_ object</strong>
 
 <code>
     $result->getCoordinate();
