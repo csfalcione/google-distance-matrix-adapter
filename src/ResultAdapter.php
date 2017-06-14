@@ -17,7 +17,7 @@ class ResultAdapter
     private $coordinate;
 
     /**
-     * @return mixed
+     * @return Coordinate
      */
     public function getCoordinate()
     {
