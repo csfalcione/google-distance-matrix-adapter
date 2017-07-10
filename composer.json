@@ -2,11 +2,15 @@
     "name": "vector/google-geocoder-adapter",
     "description": "A PHP wrapper for the Google Maps Geocoding API. So you don't have to think about it!",
     "keywords": [ "google", "api", "wrapper", "geocoding", "php", "package"],
-    "license": "",
+    "license": "DON'T BE A DICK",
     "authors": [
         {
             "name": "Chris Rocco",
             "email": "chris@vectorwebdevelopment.com"
+        },
+        {
+            "name": "Caleb Falcione",
+            "email": "caleb.falcione@gmail.com"
         }
     ],
     "type": "project",
