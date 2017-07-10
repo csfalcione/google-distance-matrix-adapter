@@ -7,5 +7,5 @@
  */
 
 return [
-    "api_key"   =>      "AIzaSyDjGdqf-qmvg6u59i8G8B_ALjCpEhSPIyE"
+    "api_key"   =>      "YOUR_KEY_HERE"
 ];
