@@ -6,7 +6,7 @@
  * Time: 8:00 PM
  */
 
-namespace vector\Geocoder;
+namespace vector\DistanceMatrix;
 
 
 class Coordinate
@@ -15,17 +15,19 @@ class Coordinate
     private $longitude;
 
     /**
+     * Returns the longitude component of this Coordinate
      * @return double
      */
-    public function getLongitude()
+    public function lng()
     {
         return $this->longitude;
     }
 
     /**
+     * Returns the latitude component of this Coordinate
      * @return double
      */
-    public function getLatitude()
+    public function lat()
     {
         return $this->latitude;
     }
@@ -34,5 +36,9 @@ class Coordinate
     {
         $this->latitude = doubleval($latitude);
         $this->longitude = doubleval($longitude);
+    }
+
+    public function __toString() {
+        return "$this->latitude,$this->longitude";
     }
 }

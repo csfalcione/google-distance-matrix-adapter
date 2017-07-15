@@ -6,130 +6,88 @@
  * Time: 8:00 PM
  */
 
-namespace vector\Geocoder;
+namespace vector\DistanceMatrix;
 
 
 class ResultAdapter  {
 
-    /**
-     * @return Coordinate
-     */
-    public function getCoordinate()
-    {
-        return $this->coordinate;
+
+    /** Returns the origin address */
+    public function origin () {
+        return $this->originAddress;
+    }
+    /** Returns the destination address */
+    public function destination () {
+        return $this->destinationAddress;
+    }
+    public function status() {
+        return $this->googleResult['status'];
     }
 
-    /**
-     * @param $component string
-     */
-    public function getAddressComponents ($search) {
-        $results = [];
-        foreach ($this->addressComponents as $component) {
-            $types = $component['types'];
-            if (in_array($search, $types)) {
-                $results[] = $component;
-            }
+    public function duration() {
+        return $this->googleResult['duration']['value'];
+    }
+    public function distance() {
+        return $this->googleResult['distance']['value'];
+    }
+    public function durationInTraffic() {
+        if (isset($this->googleResult['duration_in_traffic']['value'])) {
+            return $this->googleResult['duration_in_traffic']['value'];
         }
-        return $results;
+        return false;
     }
+
+    public function durationText() {
+        return $this->googleResult['duration']['text'];
+    }
+    public function distanceText() {
+        return $this->googleResult['distance']['text'];
+    }
+    public function durationInTrafficText() {
+        if (isset($this->googleResult['duration_in_traffic']['text'])) {
+            return $this->googleResult['duration_in_traffic']['text'];
+        }
+        return false;
+    }
+
 
     /**
-     * @return string
+     * @throws MaxRouteLengthExceededException
+     * @throws NotFoundException
+     * @throws ZeroResultsException
      */
-    public function getFormattedAddress()
-    {
-        return $this->formattedAddress;
+    private function checkStatus () {
+        $status = $this->googleResult['status'];
+        if ($status === "OK") { return; }
+        switch ($status) {
+            case "NOT_FOUND" :
+                throw new NotFoundException("($this->originAddress) or ($this->destinationAddress) could not be geocoded");
+                break;
+            case "ZERO_RESULTS" :
+                throw new ZeroResultsException("No route could be found between ($this->originAddress) and ($this->destinationAddress)");
+                break;
+            case "MAX_ROUTE_LENGTH_EXCEEDED" :
+                throw new MaxRouteLengthExceededException("The route between ($this->originAddress) and ($this->destinationAddress) is too long and could not be processed");
+                break;
+        }
     }
 
-    public function getPlaceID () {
-        return $this->placeID;
-    }
+    private $googleResult;
+    private $originAddress;
+    private $destinationAddress;
 
     /**
-     * @return bool|string
+     * ResultAdapter constructor.
+     * @param $googleResult array
+     * @param $originAddress string
+     * @param $destinationAddress string
      */
-    public function getStreetNumber () {
-        $results = $this->getAddressComponents('street_number');
-        if (count($results) === 0) {    return false;   }
-        return self::getShortName($results[0]);
-    }
-
-    /**
-     * @return bool|string
-     */
-    public function getStreet () {
-        $results = $this->getAddressComponents('route');
-        if (count($results) === 0) {    return false;   }
-        return self::getShortName($results[0]);
-    }
-
-    /**
-     * @return bool|string
-     */
-    public function getCity () {
-        $results = $this->getAddressComponents('locality');
-        if (count($results) === 0) {    return false;   }
-        return self::getShortName($results[0]);
-    }
-
-    /**
-     * @return bool|string
-     */
-    public function getCounty () {
-        $results = $this->getAddressComponents('administrative_area_level_2');
-        if (count($results) === 0) {    return false;   }
-        return self::getShortName($results[0]);
-    }
-
-    /**
-     * @return bool|string
-     */
-    public function getState () {
-        $results = $this->getAddressComponents('administrative_area_level_1');
-        if (count($results) === 0) {    return false;   }
-        return self::getShortName($results[0]);
-    }
-
-    /**
-     * @return bool|string
-     */
-    public function getCountry () {
-        $results = $this->getAddressComponents('country');
-        if (count($results) === 0) {    return false;   }
-        return self::getShortName($results[0]);
-    }
-
-    /**
-     * @return bool|string
-     */
-    public function getZipCode () {
-        $results = $this->getAddressComponents('postal_code');
-        if (count($results) === 0) {    return false;   }
-        return self::getShortName($results[0]);
-    }
-
-    /**
-     * @return bool|string
-     */
-    public static function getShortName ($addressComponent) {
-        return $addressComponent['short_name'];
-    }
-
-    protected $googleResult;
-    private $addressComponents;
-    private $formattedAddress;
-    private $placeID;
-    private $coordinate;
-
-    function __construct( $googleResult ){
+    function __construct( $googleResult, $originAddress, $destinationAddress ){
         // Depends on..
         // Google Geocoder API: https://developers.google.com/maps/documentation/geocoding/start
-        $this->googleResult =           $googleResult;
-        $this->formattedAddress =       $googleResult['formatted_address'];
-        $this->placeID =                $googleResult['place_id'];
-        $this->addressComponents =      $googleResult['address_components'];
-        $lat =                          $googleResult['geometry']['location']['lat'];
-        $lng =                          $googleResult['geometry']['location']['lng'];
-        $this->coordinate = new Coordinate( $lat, $lng );
+        $this->googleResult =       $googleResult;
+        $this->originAddress =      $originAddress;
+        $this->destinationAddress = $destinationAddress;
+        $this->checkStatus();
     }
 }

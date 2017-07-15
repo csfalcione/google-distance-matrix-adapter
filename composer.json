@@ -1,7 +1,7 @@
 {
-    "name": "vector/google-geocoder-adapter",
-    "description": "A PHP wrapper for the Google Maps Geocoding API. So you don't have to think about it!",
-    "keywords": [ "google", "api", "wrapper", "geocoding", "php", "package"],
+    "name": "vector/google-distance-matrix-adapter",
+    "description": "A PHP wrapper for the Google Maps Distance Matrix API. So you don't have to think about it!",
+    "keywords": [ "google", "api", "wrapper", "distance", "php", "package"],
     "license": "DON'T BE A DICK",
     "authors": [
         {
@@ -22,7 +22,7 @@
     },
 	"autoload": {
         "psr-4": {
-            "vector\\Geocoder\\": "src/"
+            "vector\\DistanceMatrix\\": "src/"
         }
     },
     "scripts": {
