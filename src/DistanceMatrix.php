@@ -28,7 +28,7 @@ class DistanceMatrix {
     /**
      * @param $origin mixed
      * @param $destination mixed
-     * @return ResultAdapter[]
+     * @return ResultAdapter[]|bool[]
      */
     public function search( $origin, $destination, $options = [] ){
         //Create all of our query parameters
