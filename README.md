@@ -7,33 +7,32 @@ A straightforward, reliable, PHP wrapper for consuming the Google Geocoding API.
 How to Use
 --------
 <ol>
-    <li><strong>Construct a Geocoder with your google api_key</strong>
+    <li><strong>Construct a DistanceMatrix with your google api key</strong>
         <br/>
         <code>
-            new Geocoder( "your_api_key" );
+            $distanceMatrix = new DistanceMatrix( "your_api_key" );
         </code>
     </li>
     <li><strong>Run a search or get the first match</strong>
         <br/>
         <code>
-            $search = "Innovation Depot Birmingham";
+            $origin = new Coordinate (40, -74);
+            $destination = "Empire State Building"
             <br>
-            $result = $geocoder->firstResult( $search );
+            $result = $distanceMatrix->first( $origin, $destination );
         </code>
     </li>
     <li><strong>Interact with the data through the <em>ResultAdapter object</em></strong>
         <br/>
         <code>
-            $result->getCoordinate();
+            $result->duration();
             <br/>
-            $result->getFormattedAddress();
+            $result->distance();
         </code>
     </li>
 </ol>
 
 <h3> Not enough functionality? </h3>
-<h6> We've only included what was applicable to another project, but all of our
-packages are designed for easy scaling.</h6>
 
 <h6> Feel free to add functionality for your project, just make sure to
 send a pull request when you're done! </h6>
