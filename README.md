@@ -1,8 +1,8 @@
-Google Maps Geocoder PHP Wrapper
+Google Maps Distance Matrix PHP Wrapper
 =========================
 
 <h3>So you dont have to think about it!</h3>
-A straightforward, reliable, PHP wrapper for consuming the Google Geocoding API.
+A straightforward, reliable, PHP wrapper for consuming the Google Distance Matrix API.
 
 How to Use
 --------
