@@ -116,15 +116,11 @@ class DistanceMatrix {
         if (!isset($responseJson['rows'])) {    return [];  } //JSON parsing will omit empty arrays
         foreach ($responseJson['rows'] as $originIndex => $destinations) {
             foreach ($destinations['elements'] as $destinationIndex => $element) {
-                try {
-                    $result[] = new ResultAdapter(
-                        $element,
-                        $originAddresses[$originIndex],
-                        $destinationAddresses[$destinationIndex]
-                    );
-                } catch (DistanceMatrixException $e) {
-                    $result[] = false;
-                }
+                $result[] = new ResultAdapter(
+                    $element,
+                    $originAddresses[$originIndex],
+                    $destinationAddresses[$destinationIndex]
+                );
             }
         }
         return $result;
